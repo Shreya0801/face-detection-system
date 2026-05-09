@@ -1,0 +1,88 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #0f0f13;
+  color: #e8e8e8;
+  min-height: 100vh;
+}
+
+.app { display: flex; flex-direction: column; min-height: 100vh; }
+
+.app-header {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 24px;
+  background: #1a1a24;
+  border-bottom: 1px solid #2e2e40;
+}
+.app-header h1 { font-size: 18px; font-weight: 600; }
+.badge {
+  font-size: 11px; padding: 3px 8px; border-radius: 12px;
+  background: #2a2a3a; color: #888;
+}
+
+.app-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px; padding: 24px; flex: 1;
+}
+@media (max-width: 900px) { .app-main { grid-template-columns: 1fr; } }
+
+/* Video panel */
+.video-panel { display: flex; flex-direction: column; gap: 12px; }
+
+.stream-wrapper {
+  position: relative; background: #111;
+  border-radius: 8px; overflow: hidden; aspect-ratio: 4/3;
+}
+.stream-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.roi-badge {
+  position: absolute; bottom: 10px; left: 10px;
+  background: rgba(0,0,0,0.7); border: 1px solid #00ff50;
+  color: #00ff50; font-size: 12px; font-family: monospace;
+  padding: 4px 8px; border-radius: 4px;
+  display: flex; align-items: center; gap: 6px;
+}
+.roi-badge--none { border-color: #666; color: #999; }
+
+.dot {
+  width: 7px; height: 7px; border-radius: 50%; background: #00ff50;
+  animation: pulse 1s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.controls { display: flex; align-items: center; gap: 12px; }
+.btn {
+  padding: 9px 20px; border: none; border-radius: 6px;
+  font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity 0.15s;
+}
+.btn:hover { opacity: 0.85; }
+.btn--start { background: #00b44a; color: #fff; }
+.btn--stop  { background: #c0392b; color: #fff; }
+.fps-label  { font-size: 13px; color: #888; font-family: monospace; }
+.error-msg  { color: #e74c3c; font-size: 13px; }
+
+/* ROI table */
+.roi-panel { display: flex; flex-direction: column; gap: 12px; }
+.roi-panel h2 { font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+.total-badge {
+  font-size: 11px; font-weight: 400;
+  background: #2a2a3a; color: #888; padding: 2px 8px; border-radius: 10px;
+}
+
+.table-scroll { overflow-y: auto; max-height: 500px; border-radius: 8px; border: 1px solid #2a2a3a; }
+.roi-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.roi-table th {
+  background: #1a1a24; padding: 10px 12px; text-align: left;
+  font-weight: 500; color: #aaa; position: sticky; top: 0; border-bottom: 1px solid #2a2a3a;
+}
+.roi-table td { padding: 8px 12px; border-bottom: 1px solid #1e1e2a; font-family: monospace; }
+.roi-table tr:last-child td { border-bottom: none; }
+.roi-table tbody tr:hover { background: #1a1a24; }
+
+.conf-pill {
+  display: inline-block; padding: 2px 7px; border-radius: 10px;
+  color: #fff; font-size: 11px; font-weight: 600;
+}
+.muted { color: #666; font-family: inherit; }
