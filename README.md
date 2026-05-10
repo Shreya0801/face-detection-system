@@ -284,6 +284,13 @@ This project was built with AI assistance.
 
 ---
 
+## 🔒 Security Notes
+
+- CORS configured to allow only specified origins
+- Input validation via Pydantic on all endpoints
+- Security headers added (X-Content-Type-Options, X-Frame-Options, X-XSS-Protection)
+- Base image `python:3.11-slim` has known CVEs — for production, pin to a patched digest or use `python:3.11-alpine`
+
 ## 📄 License
 
 MIT
